@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "Setting matrix from payload or default..."
           if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            drones='${{ toJson(github.event.client_payload.successful_builds) }}'
+            drones=$(jq -c <<< '${{ toJson(github.event.client_payload.successful_builds) }}')
           else
             drones='[]'
           fi
