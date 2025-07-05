@@ -9,6 +9,22 @@ on:
 jobs:
   fetch-messages:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Set drone matrix
+        id: set-matrix
+        run: |
+          echo "Setting matrix from payload or default..."
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            drones='${{ toJson(github.event.client_payload.successful_builds) }}'
+          else
+            drones='[]'
+          fi
+          echo "matrix=$drones" >> $GITHUB_OUTPUT
+  build:
+    needs: fetch-messages
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/eolab-hsrw/easy-px4:ubuntu-22.04
     permissions:
