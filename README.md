@@ -7,7 +7,9 @@ Related workflows:
 | [![Generate Firmwares](https://github.com/EOLab-HSRW/drones-fw/actions/workflows/build-firmwares.yml/badge.svg)](https://github.com/EOLab-HSRW/drones-fw/actions/workflows/build-firmwares.yml) |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | (TODO: add .deb package for SITL)                                                                                                                                                               |
-| (TODO: auto-sync workflow)                                                                                                                                                                      |
+| [![Sync Messages](https://github.com/EOLab-HSRW/px4_msgs/actions/workflows/messages.yml/badge.svg)](https://github.com/EOLab-HSRW/px4_msgs/actions/workflows/messages.yml)                      |
+
+
 Copied from `CONTRIBUTING.md`:
 
 *Do not* commit changes directly to this repository that change the message definitions. All the message definitions are directly generated from the [uORB msg definitions](https://github.com/PX4/Firmware/tree/master/msg) on the [PX4 Firmware repository](https://github.com/PX4/Firmware).
