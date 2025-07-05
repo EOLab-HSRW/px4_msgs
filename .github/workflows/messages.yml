@@ -1,6 +1,8 @@
 name: Get Messages
 
 on:
+  repository_dispatch:
+    types: [successful-builds]
   workflow_dispatch:
 
 
@@ -14,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drone: ['protoflyer', 'condor']
+        drone: ${{ toJson(github.event.client_payload.successful_builds) }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
