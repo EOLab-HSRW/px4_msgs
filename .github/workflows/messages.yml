@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drone: ${{ toJson(github.event.client_payload.successful_builds) }}
+        drone: ${{ fromJson(github.event.client_payload.successful_builds) }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
