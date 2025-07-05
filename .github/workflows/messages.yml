@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        drone: ${{ fromJson(github.event.client_payload.successful_builds) }}
+        drone: ${{ fromJson(needs.fetch-messages.outputs.matrix) }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
